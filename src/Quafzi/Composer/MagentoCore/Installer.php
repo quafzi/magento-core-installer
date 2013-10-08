@@ -91,6 +91,9 @@ class Installer extends MagentoModuleInstaller
             'var'
         );
         foreach ($writableDirs as $dir) {
+            if (!file_exists($this->getTargetDir() . DIRECTORY_SEPARATOR . $dir)) {
+                mkdir($this->getTargetDir() . DIRECTORY_SEPARATOR . $dir);
+            }
             $this->setPermissions($this->getTargetDir() . DIRECTORY_SEPARATOR. $dir, 0777, 0666);
             echo "set permissions for {$this->getTargetDir()}/$dir" . PHP_EOL;
         }
