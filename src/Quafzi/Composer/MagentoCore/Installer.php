@@ -18,7 +18,7 @@ class Installer extends MagentoModuleInstaller
 {
     public function supports($packageType)
     {
-        return 'magento-core' === $packageType || 'magento-module' === $packageType;
+        return 'magento-core' === $packageType;
     }
 
     /**
