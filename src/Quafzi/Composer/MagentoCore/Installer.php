@@ -16,8 +16,6 @@ use MagentoHackathon\Composer\Magento\Deploystrategy\Copy as CopyStrategy;
  */
 class Installer extends MagentoModuleInstaller
 {
-    protected $_deployStrategy = 'copy';
-
     public function supports($packageType)
     {
         var_dump(__FILE__ . ' on line ' . __LINE__ . ':', 
@@ -39,11 +37,6 @@ class Installer extends MagentoModuleInstaller
         parent::install($repo, $package);
 
         $this->prepareMagento($package);
-    }
-
-    public function getParser(PackageInterface $package)
-    {
-        return new MapParser(array(array('.', '.')));
     }
 
     /**
@@ -80,9 +73,10 @@ class Installer extends MagentoModuleInstaller
         $sourceDir = $this->getSourceDir($package) . $appFolder;
         $targetDir = $this->getTargetDir() . $appFolder;
         $strategy = new \MagentoHackathon\Composer\Magento\Deploystrategy\Copy($sourceDir, $targetDir);
-        $strategy->setMappings(array(
-            'app/Mage.php' => 'app/Mage.php'
-        ));
+        $strategy->setMappings(array(array(
+            'Mage.php', 'Mage.php'
+        )));
+        $strategy->setIsForced(true);
         $strategy->deploy();
         echo "copied Mage.php" . PHP_EOL;
     }
