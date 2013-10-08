@@ -16,6 +16,8 @@ use MagentoHackathon\Composer\Magento\Deploystrategy\Copy as CopyStrategy;
  */
 class Installer extends MagentoModuleInstaller
 {
+    protected $_deployStrategy = 'copy';
+
     public function supports($packageType)
     {
         var_dump(__FILE__ . ' on line ' . __LINE__ . ':', 
@@ -39,19 +41,9 @@ class Installer extends MagentoModuleInstaller
         $this->prepareMagento($package);
     }
 
-    public function getDeployStrategy(PackageInterface $package, $strategy = null)
-    {
-        var_dump('forcing copy');
-        $targetDir = $this->getTargetDir();
-        $sourceDir = $this->getSourceDir($package);
-        $impl = new CopyStrategy($sourceDir, $targetDir);
-        $impl->setIsForced(true);
-        return $impl;
-    }
-
     public function getParser(PackageInterface $package)
     {
-        return new MapParser(array('.' => '.'));
+        return new MapParser(array(array('.' => '.')));
     }
 
     /**
