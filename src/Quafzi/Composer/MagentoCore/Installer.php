@@ -8,6 +8,8 @@ namespace Quafzi\Composer\MagentoCore;
 use MagentoHackathon\Composer\Magento\Installer as MagentoModuleInstaller;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Package\PackageInterface;
+use MagentoHackathon\Composer\Magento\MapParser;
+use MagentoHackathon\Composer\Magento\Deploystrategy\Copy as CopyStrategy;
 
 /**
  * Composer Magento Core Installer
@@ -39,9 +41,10 @@ class Installer extends MagentoModuleInstaller
 
     public function getDeployStrategy(PackageInterface $package, $strategy = null)
     {
+        var_dump('forcing copy');
         $targetDir = $this->getTargetDir();
         $sourceDir = $this->getSourceDir($package);
-        $impl = new \MagentoHackathon\Composer\Magento\Deploystrategy\Copy($sourceDir, $targetDir);
+        $impl = new CopyStrategy($sourceDir, $targetDir);
         $impl->setIsForced(true);
         return $impl;
     }
