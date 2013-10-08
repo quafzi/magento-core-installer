@@ -18,10 +18,6 @@ class Installer extends MagentoModuleInstaller
 {
     public function supports($packageType)
     {
-        var_dump(__FILE__ . ' on line ' . __LINE__ . ':', 
-            $packageType,
-        'magento-core' === $packageType || 'magento-module' === $packageType
-        );
         return 'magento-core' === $packageType || 'magento-module' === $packageType;
     }
 
@@ -33,7 +29,6 @@ class Installer extends MagentoModuleInstaller
      */
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
-        var_dump(__FILE__ . ' on line ' . __LINE__ . ':', $package->getName());
         parent::install($repo, $package);
 
         $this->prepareMagento($package);
@@ -48,7 +43,6 @@ class Installer extends MagentoModuleInstaller
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $package)
     {
-        var_dump(__FILE__ . ' on line ' . __LINE__ . ':', $package->getName());
         parent::update($repo, $initial, $package);
 
         $this->prepareMagento($package);
@@ -78,7 +72,6 @@ class Installer extends MagentoModuleInstaller
         )));
         $strategy->setIsForced(true);
         $strategy->deploy();
-        echo "copied Mage.php" . PHP_EOL;
     }
 
     /**
@@ -127,7 +120,6 @@ class Installer extends MagentoModuleInstaller
             }
             closedir($dh);
         } elseif(is_file($path)) {
-            echo 'Set permission for ' . $path . PHP_EOL;
             if (false == !chmod($path, $filemode)) {
                 $filemode_str=decoct($filemode);
                 echo sprintf(
