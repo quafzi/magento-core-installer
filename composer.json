@@ -1,8 +1,9 @@
 {
     "name": "quafzi/magento-core-installer",
     "description": "allow Magento core to be run after installation via Composer",
-    "type": "composer-installer",
+    "keywords":[ "composer-installer", "magento"],
     "minimum-stability": "dev",
+    "type": "composer-installer",
     "license": "MIT",
     "authors":[
         {
