@@ -21,13 +21,7 @@ Example:
       "description": "Magento Core",
       "require": {
         "quafzi/magento-core-installer": "dev-master"
-      },
-      "repositories": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/quafzi/magento-core-installer.git"
-        }
-      ]
+      }
     }
 
 ## How to generate a modman file for a whole Magento version?
