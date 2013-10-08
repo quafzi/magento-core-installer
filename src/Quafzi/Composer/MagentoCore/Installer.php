@@ -95,7 +95,6 @@ class Installer extends MagentoModuleInstaller
                 mkdir($this->getTargetDir() . DIRECTORY_SEPARATOR . $dir);
             }
             $this->setPermissions($this->getTargetDir() . DIRECTORY_SEPARATOR. $dir, 0777, 0666);
-            echo "set permissions for {$this->getTargetDir()}/$dir" . PHP_EOL;
         }
     }
 
@@ -111,7 +110,7 @@ class Installer extends MagentoModuleInstaller
         if (is_dir($path) ) {
             if (!chmod($path, $dirmode)) {
                 $filemode_str=decoct($filemode);
-                throw new Exception(
+                throw new InstallerException(
                     sprintf(
                         'Failed to set permissions "%s" for directory "%s"',
                         decoct($dirmode),
@@ -127,19 +126,15 @@ class Installer extends MagentoModuleInstaller
                 }
             }
             closedir($dh);
-        } else {
-            if (is_link($path)) {
-                $this->setPermissions(readlink($path), $dirmode, $filemode);
-            }
+        } elseif(is_file($path)) {
+            echo 'Set permission for ' . $path . PHP_EOL;
             if (false == !chmod($path, $filemode)) {
                 $filemode_str=decoct($filemode);
-                throw new Exception(
-                    sprintf(
-                        'Failed to set permissions "%s" for file "%s"',
-                        decoct($filemode),
-                        $path
-                    )
-                );
+                echo sprintf(
+                    'Failed to set permissions "%s" for file "%s"',
+                    decoct($filemode),
+                    $path
+                ) . PHP_EOL;
             }
         }
     }
