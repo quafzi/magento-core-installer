@@ -43,7 +43,7 @@ class Installer extends MagentoModuleInstaller
 
     public function getParser(PackageInterface $package)
     {
-        return new MapParser(array(array('.' => '.')));
+        return new MapParser(array(array('.', '.')));
     }
 
     /**
