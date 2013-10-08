@@ -37,6 +37,20 @@ class Installer extends MagentoModuleInstaller
         $this->prepareMagento($package);
     }
 
+    public function getDeployStrategy(PackageInterface $package, $strategy = null)
+    {
+        $targetDir = $this->getTargetDir();
+        $sourceDir = $this->getSourceDir($package);
+        $impl = new \MagentoHackathon\Composer\Magento\Deploystrategy\Copy($sourceDir, $targetDir);
+        $impl->setIsForced(true);
+        return $impl;
+    }
+
+    public function getParser(PackageInterface $package)
+    {
+        return new MapParser(array('.' => '.'));
+    }
+
     /**
      * Update Magento core
      * 
