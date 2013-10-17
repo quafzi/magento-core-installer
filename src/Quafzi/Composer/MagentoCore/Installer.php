@@ -120,7 +120,6 @@ class Installer extends MagentoModuleInstaller
             closedir($dh);
         } elseif(is_file($path)) {
             if (false == !chmod($path, $filemode)) {
-                $filemode_str=decoct($filemode);
                 echo sprintf(
                     'Failed to set permissions "%s" for file "%s"',
                     decoct($filemode),
