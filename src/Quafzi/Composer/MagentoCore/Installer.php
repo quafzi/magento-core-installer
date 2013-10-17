@@ -114,7 +114,7 @@ class Installer extends MagentoModuleInstaller
             while (($file = readdir($dh)) !== false) {
                 if($file != '.' && $file != '..') {  // skip self and parent pointing directories
                     $fullpath = $path.'/'.$file;
-                    $this->setPermissions($path . '/' . $file, $dirmode, $filemode);
+                    $this->setPermissions($fullpath, $dirmode, $filemode);
                 }
             }
             closedir($dh);
