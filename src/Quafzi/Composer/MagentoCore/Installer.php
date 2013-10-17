@@ -102,7 +102,6 @@ class Installer extends MagentoModuleInstaller
     {
         if (is_dir($path) ) {
             if (!chmod($path, $dirmode)) {
-                $filemode_str=decoct($filemode);
                 throw new InstallerException(
                     sprintf(
                         'Failed to set permissions "%s" for directory "%s"',
