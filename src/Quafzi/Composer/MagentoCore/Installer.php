@@ -8,7 +8,6 @@ namespace Quafzi\Composer\MagentoCore;
 use MagentoHackathon\Composer\Magento\Installer as MagentoModuleInstaller;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Package\PackageInterface;
-use MagentoHackathon\Composer\Magento\MapParser;
 use MagentoHackathon\Composer\Magento\Deploystrategy\Copy as CopyStrategy;
 
 /**
