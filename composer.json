@@ -17,6 +17,12 @@
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
     },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "http://packages.firegento.com"
+      }
+    ],
     "extra": {
         "composer-command-registry": [ "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand" ],
         "class": "Quafzi\\Composer\\MagentoCore\\Installer"
