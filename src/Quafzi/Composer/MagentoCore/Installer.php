@@ -15,6 +15,8 @@ use MagentoHackathon\Composer\Magento\Deploystrategy\Copy as CopyStrategy;
  */
 class Installer extends MagentoModuleInstaller
 {
+    protected $_deployStrategy = 'copy';
+
     public function supports($packageType)
     {
         return 'magento-core' === $packageType;
@@ -50,27 +52,8 @@ class Installer extends MagentoModuleInstaller
     protected function prepareMagento(PackageInterface $package)
     {
         if (!$this->skipPackageDeployment) {
-            $this->copyMagePhp($package);
             $this->setMagentoPermissions();
         }
-    }
-
-    /**
-     * Copy Mage.php as it contains file system operations that don't allow this file to be symlinked
-     * 
-     * @param PackageInterface $package 
-     */
-    protected function copyMagePhp(PackageInterface $package)
-    {
-        $appFolder = DIRECTORY_SEPARATOR . 'app';
-        $sourceDir = $this->getSourceDir($package) . $appFolder;
-        $targetDir = $this->getTargetDir() . $appFolder;
-        $strategy = new \MagentoHackathon\Composer\Magento\Deploystrategy\Copy($sourceDir, $targetDir);
-        $strategy->setMappings(array(array(
-            'Mage.php', 'Mage.php'
-        )));
-        $strategy->setIsForced(true);
-        $strategy->deploy();
     }
 
     /**
