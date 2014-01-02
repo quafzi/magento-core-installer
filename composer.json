@@ -15,7 +15,8 @@
         "psr-0": {"Quafzi\\Composer\\MagentoCore": "src/"}
     },
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "magento-hackathon/magento-composer-installer": "*",
+
     },
     "repositories": [
       {
@@ -24,7 +25,10 @@
       }
     ],
     "extra": {
-        "composer-command-registry": [ "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand" ],
+        "composer-command-registry": [
+            "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand",
+            "Quafzi\\Composer\\MagentoCore\\Command\\DeployCommand"
+        ],
         "class": "Quafzi\\Composer\\MagentoCore\\Installer"
     }
 }
