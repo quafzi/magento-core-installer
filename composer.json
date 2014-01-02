@@ -15,8 +15,7 @@
         "psr-0": {"Quafzi\\Composer\\MagentoCore": "src/"}
     },
     "require": {
-        "magento-hackathon/magento-composer-installer": "*",
-
+        "magento-hackathon/magento-composer-installer": "*"
     },
     "repositories": [
       {
