@@ -17,6 +17,9 @@
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
     },
+    "suggest":{
+        "magento-hackathon/composer-command-integrator":"*"
+    },
     "repositories": [
       {
         "type": "composer",
