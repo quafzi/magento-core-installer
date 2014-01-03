@@ -89,12 +89,10 @@ class Installer extends MagentoModuleInstaller
                 $success = false;
             }
             if (false == $success) {
-                throw new InstallerException(
-                    sprintf(
-                        'Failed to set permissions "%s" for directory "%s"',
-                        decoct($dirmode),
-                        $path
-                    )
+                echo sprintf(
+                    'Failed to set permissions "%s" for directory "%s"',
+                    decoct($dirmode),
+                    $path
                 );
             }
             $dh = opendir($path);
