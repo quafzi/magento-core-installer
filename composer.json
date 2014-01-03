@@ -17,6 +17,9 @@
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
     },
+    "suggest":{
+        "magento-hackathon/composer-command-integrator":"*"
+    },
     "repositories": [
       {
         "type": "composer",
@@ -24,7 +27,10 @@
       }
     ],
     "extra": {
-        "composer-command-registry": [ "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand" ],
+        "composer-command-registry": [
+            "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand",
+            "Quafzi\\Composer\\MagentoCore\\Command\\DeployCommand"
+        ],
         "class": "Quafzi\\Composer\\MagentoCore\\Installer"
     }
 }
