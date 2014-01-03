@@ -93,7 +93,7 @@ class Installer extends MagentoModuleInstaller
                     'Failed to set permissions "%s" for directory "%s"',
                     decoct($dirmode),
                     $path
-                );
+                ) . PHP_EOL;
             }
             $dh = opendir($path);
             while (($file = readdir($dh)) !== false) {
