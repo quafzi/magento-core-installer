@@ -83,13 +83,11 @@ class Installer extends MagentoModuleInstaller
     protected function setPermissions($path, $dirmode, $filemode)
     {
         if (is_dir($path) ) {
-            if (!chmod($path, $dirmode)) {
-                throw new InstallerException(
-                    sprintf(
-                        'Failed to set permissions "%s" for directory "%s"',
-                        decoct($dirmode),
-                        $path
-                    )
+            if (!@chmod($path, $dirmode)) {
+                echo sprintf(
+                    'Failed to set permissions "%s" for directory "%s"',
+                    decoct($dirmode),
+                    $path
                 );
             }
             $dh = opendir($path);
@@ -101,7 +99,7 @@ class Installer extends MagentoModuleInstaller
             }
             closedir($dh);
         } elseif(is_file($path)) {
-            if (false == !chmod($path, $filemode)) {
+            if (false == !@chmod($path, $filemode)) {
                 echo sprintf(
                     'Failed to set permissions "%s" for file "%s"',
                     decoct($filemode),
