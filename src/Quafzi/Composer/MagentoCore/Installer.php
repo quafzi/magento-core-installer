@@ -22,6 +22,11 @@ class Installer extends MagentoModuleInstaller
         return 'magento-core' === $packageType;
     }
 
+    public function getDeployStrategy(PackageInterface $package, $strategy = null)
+    {
+        return parent::getDeployStrategy($package, 'copy');
+    }
+
     /**
      * Install Magento core
      * 
